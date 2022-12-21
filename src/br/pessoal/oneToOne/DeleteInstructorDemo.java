@@ -1,14 +1,14 @@
-package br.pessoal.hibernate.demo;
+package br.pessoal.oneToOne;
 
-import br.pessoal.hibernate.demo.entity.Instructor;
-import br.pessoal.hibernate.demo.entity.InstructorDetail;
+import br.pessoal.entity.Instructor;
+import br.pessoal.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.util.Objects;
 
-public class DeleteDemo {
+public class DeleteInstructorDemo {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory = new Configuration()

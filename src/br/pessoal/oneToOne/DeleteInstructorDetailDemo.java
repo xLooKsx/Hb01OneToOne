@@ -1,15 +1,12 @@
-package br.pessoal.hibernate.demo;
+package br.pessoal.oneToOne;
 
-import br.pessoal.hibernate.demo.entity.Instructor;
-import br.pessoal.hibernate.demo.entity.InstructorDetail;
+import br.pessoal.entity.Instructor;
+import br.pessoal.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.Arrays;
-import java.util.Objects;
-
-public class GetInstructorDetailDemo {
+public class DeleteInstructorDetailDemo {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory = new Configuration()
@@ -24,12 +21,18 @@ public class GetInstructorDetailDemo {
 
             session.beginTransaction();
 
-            int theId = 123;
+            int theId = 3;
 
             InstructorDetail instructorDetail = session.get(InstructorDetail.class, theId);
 
             System.out.println("The instructor detail: " + instructorDetail);
             System.out.println("The associated instructor: " + instructorDetail.getInstructor());
+
+            //Remove the associated object reference bi-directional link
+            instructorDetail.getInstructor().setInstructorDetail(null);
+
+            System.out.println("Deleting the associated instructor");
+            session.delete(instructorDetail);
 
             session.getTransaction().commit();
         }catch (Exception e){
