@@ -5,7 +5,12 @@ import java.sql.DriverManager;
 
 public class TestJdbc {
     public static void main(String[] args) {
-        final String jdbcUrl = "jdbc:mysql://localhost:3306/hb-01-one-to-one-uni?useSSL=false";
+        connectionTest("hb-01-one-to-one-uni");
+        connectionTest("hb-03-one-to-many");
+    }
+
+    private static void connectionTest(final String dataBaseName) {
+        final String jdbcUrl = "jdbc:mysql://localhost:3306/"+dataBaseName+"?useSSL=false";
         final String user= "hbstudent";
         final String pass= "hbstudent";
 
